@@ -69,7 +69,18 @@ systematic-review-assistant/
 **Current stage:**
 
 - Design completed
-- Implementation of PDF processing and schema extraction is in progress
+- Implementation of PDF processing(from PDF parsing to JSON export)
+- Test v1.1 for "pdf_extraction.py" is in progress
+- Other functions(e.g., OCR/Recognition for title, keywords, etc./LLM using) is in progress
+
+**to-do list**
+[ ] OCR pipeline
+[ ] LLM-based structure extraction
+[ ] Literature matrix generation
+[ ] Embedding generation
+[ ] Topic clustering
+[ ] Relationship discovery
+[ ] Knowledge graph visualization
 
 ## License
 
