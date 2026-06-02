@@ -38,7 +38,7 @@ JSON Output
 ```
 ### Literature Schema v1.0
 
-```JSON
+```{JSON}
 {
   "research_question": "",
   "topic": [],
@@ -69,7 +69,7 @@ systematic-review-assistant/
 **Current stage:**
 
 - Design completed
-- Implementation of PDF processing(from PDF parsing to JSON export)
+- Primary PDF processing(from PDF parsing to JSON export) completed
 - Test v1.1 for "pdf_extraction.py" is in progress
 - Other functions(e.g., OCR/Recognition for title, keywords, etc./LLM using) is in progress
 
