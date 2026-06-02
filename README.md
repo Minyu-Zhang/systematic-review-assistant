@@ -74,13 +74,13 @@ systematic-review-assistant/
 - Other functions(e.g., OCR/Recognition for title, keywords, etc./LLM using) is in progress
 
 **to-do list**
-[ ] OCR pipeline
-[ ] LLM-based structure extraction
-[ ] Literature matrix generation
-[ ] Embedding generation
-[ ] Topic clustering
-[ ] Relationship discovery
-[ ] Knowledge graph visualization
+- OCR pipeline
+- LLM-based structure extraction
+- Literature matrix generation
+- Embedding generation
+- Topic clustering
+- Relationship discovery
+- Knowledge graph visualization
 
 ## License
 
