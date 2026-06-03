@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.pyc
+
+# Data
+data/pdf/
+data/json/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store

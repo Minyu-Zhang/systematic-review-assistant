@@ -88,8 +88,13 @@ def main():
 
     for pdf_file in pdf_dir.glob("*.pdf"):
         try:
-            extract_pdf(pdf_file)
-            print(f"Processed: {pdf_file.name}")
+            result = extract_pdf(pdf_file)
+            print(
+                f"Processed: {pdf_file.name} |"
+                f"Pages: {result['page_count']} | "
+                f"Chars: {result['text_length']} | "
+                f"OCR: {result['ocr_needed']}"
+                )
         except Exception as e:
             print(f"Error: {pdf_file}")
             print(e)
