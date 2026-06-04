@@ -17,23 +17,31 @@ def extract_metadata(doc):
     return metadata
 
 
-def extract_first_pages(doc):
-    text = []
-    for i in range(min(2, len(doc))):
-        text.append(doc[i].get_text())
-    first_pages_text = "\n".join(text)
-    return first_pages_text
+# def extract_first_pages(doc):
+#     text = []
+#     for i in range(min(2, len(doc))):
+#         text.append(doc[i].get_text())
+#     first_page_texts = "\n".join(text)
+#     return first_page_texts
 
-
-def extract_full_text(doc):
-    texts = []
+def extract_pages(doc):
+    page_texts = []
     for page in doc:
-        texts.append(page.get_text())
-    full_text = "\n".join(texts)
+        # 提取当前页的纯文本内容
+        text = page.get_text() or ""
+        page_texts.append(text)
+    return page_texts
 
-    ocr_need = len(full_text.strip()) < 100  # 如果无法提取，换ocr方法
 
-    return full_text, ocr_need
+# def extract_full_text(page_texts):
+#     # texts = []
+#     # for page in doc:
+#     #     texts.append(page.get_text())
+#     # full_text = "\n".join(texts)
+
+#     full_text = "\n".join(page_texts)
+#     ocr_need = len(full_text.strip()) < 100  # 如果无法提取，换ocr方法
+#     return full_text, ocr_need
 
 
 # 保存结果
@@ -60,19 +68,26 @@ def extract_pdf(pdf_file):
 
         # 运行上述各函数
         metadata = extract_metadata(doc)
-        full_text, ocr_need = extract_full_text(doc)
-        first_pages_text = extract_first_pages(doc)
+        page_texts = extract_pages(doc)
+        # 另存一个full_text便于后续文本清洗
+        full_text = "\n".join(page_texts)
+        # 判断是否需要用ocr方法
+        ocr_need = len(full_text.strip()) < 100
+        # 一些无用小功能
+        page_lengths = [len(text) for text in page_texts]
+
         result = {
             "file_name": pdf_path.name,
             "metadata": metadata,
             "page_count": len(doc),
+            "page_texts": page_texts,
+            "page_lengths": page_lengths,
             "full_text": full_text,
-            "first_pages_text": first_pages_text,
             "ocr_needed": ocr_need,
             "extracted_at": datetime.now().isoformat(),
             "pdf_path": str(pdf_path),
             "text_length": len(full_text),
-            "first_pages_length": len(first_pages_text)
+            "avg_page_length": (len(full_text) / len(doc))
         }
         save_json(result, output_path)
 

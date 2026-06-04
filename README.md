@@ -23,33 +23,57 @@ Visualization  # Literature Network / Knowledge Graph
 ## Current Scope (v1.0)
 The first development stage focuses on structured information extraction from academic articles.
 
-### v1.0 Workflow:
+### Literature Schema v0.1(2026-6-4)
 
 ```text
-PDF
-↓
-Text Extraction
-↓
-Abstract Extraction
-↓
-Schema Extraction
-↓
-JSON Output
-```
-### Literature Schema v1.0
+document_metadata
+├── file_name
+├── page_count
+├── creator
+├── producer
+├── creation_date
+├── modification_date
+├── pdf_path
 
-```{JSON}
-{
-  "research_question": "",
-  "topic": [],
-  "theory": [],
-  "method": "",
-  "data_source": "",
-  "sample": "",  # Study Population/respondents(e.g.,Chinese women aged 20–49)
-  "country": "",
-  "variables": [],
-  "findings": []
-}
+bibliographic_metadata
+├── title
+├── authors
+├── journal
+├── year
+├── doi
+├── keywords
+
+research_profile
+├── research_topic
+├── study_population
+├── study_region
+├── study_period
+
+conceptual_framework
+├── theories
+├── concepts
+├── variables
+
+methodology
+├── data_source
+├── sample_size
+├── methods
+├── models
+
+results
+├── findings
+├── limitations
+├── research_gap
+
+sections
+├── abstract
+├── introduction
+├── methods
+├── results
+├── discussion
+├── conclusion
+
+citations
 ```
 
 _The schema is designed to capture core research elements from academic literature and provide a structured foundation for subsequent topic clustering, relationship discovery, and knowledge mapping._
@@ -69,13 +93,18 @@ systematic-review-assistant/
 **Current stage:**
 
 - Design completed
-- Primary PDF processing(from PDF parsing to JSON export) completed
-- Test v1.1 for "pdf_extraction.py" is in progress
-- Other functions(e.g., OCR/Recognition for title, keywords, etc./LLM using) is in progress
+- Primary PDF processing(from PDF parsing to JSON export) completed and tested
+- Other functions(e.g., OCR/LLM using) is in progress
+- Primary text-cleaning process completed
 
-**to-do list**
-- OCR pipeline
-- LLM-based structure extraction
+**To-do list**
+1. extract_pdf:
+- OCR pipeline(not necessary temporarily)
+2. clean_text:
+- Section parsing
+3. other:
+- Information extraction/LLM-based structure extraction
+- Schema construction
 - Literature matrix generation
 - Embedding generation
 - Topic clustering
