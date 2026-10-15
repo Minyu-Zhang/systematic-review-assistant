@@ -1,0 +1,162 @@
+[
+  {
+    "document": "Liu和Emirbayer - 2016 - Field and Ecology.pdf",
+    "page": 2,
+    "heading_tp": 1,
+    "heading_fp": 0,
+    "heading_fn": 0,
+    "missing_headings": [],
+    "extra_headings": [],
+    "snippets": [
+      {
+        "text": "This article offers a theoretical comparison",
+        "native": true,
+        "model": true,
+        "markdown": false
+      },
+      {
+        "text": "Pierre Bourdieu and the Chicago School of sociology",
+        "native": true,
+        "model": true,
+        "markdown": false
+      }
+    ]
+  },
+  {
+    "document": "Hu 等 - 2010 - Factors that influence the participation of healthcare professionals in advance care planning for pa.pdf",
+    "page": 1,
+    "heading_tp": 2,
+    "heading_fp": 0,
+    "heading_fn": 0,
+    "missing_headings": [],
+    "extra_headings": [],
+    "snippets": [
+      {
+        "text": "600 physicians and nurses",
+        "native": true,
+        "model": true,
+        "markdown": true
+      },
+      {
+        "text": "Taiwan",
+        "native": true,
+        "model": true,
+        "markdown": true
+      }
+    ]
+  },
+  {
+    "document": "Hu 等 - 2010 - Factors that influence the participation of healthcare professionals in advance care planning for pa.pdf",
+    "page": 2,
+    "heading_tp": 7,
+    "heading_fp": 0,
+    "heading_fn": 3,
+    "missing_headings": [
+      "measurement",
+      "statisticalanalysis",
+      "studydesignandpopulation"
+    ],
+    "extra_headings": [],
+    "snippets": [
+      {
+        "text": "413 (68.8%)",
+        "native": true,
+        "model": true,
+        "markdown": true
+      },
+      {
+        "text": "153 physicians (37%) and 260 nurses (63%)",
+        "native": true,
+        "model": true,
+        "markdown": true
+      }
+    ]
+  },
+  {
+    "document": "Hu 等 - 2010 - Factors that influence the participation of healthcare professionals in advance care planning for pa.pdf",
+    "page": 3,
+    "heading_tp": 0,
+    "heading_fp": 0,
+    "heading_fn": 0,
+    "missing_headings": [],
+    "extra_headings": [],
+    "snippets": [
+      {
+        "text": "Table 1",
+        "native": true,
+        "model": true,
+        "markdown": true
+      },
+      {
+        "text": "Table 2",
+        "native": true,
+        "model": true,
+        "markdown": true
+      },
+      {
+        "text": "Table 3",
+        "native": true,
+        "model": true,
+        "markdown": true
+      },
+      {
+        "text": "78(42.4)",
+        "native": true,
+        "model": true,
+        "markdown": true
+      },
+      {
+        "text": "30(13.1)",
+        "native": true,
+        "model": true,
+        "markdown": true
+      }
+    ]
+  },
+  {
+    "document": "Hu 等 - 2010 - Factors that influence the participation of healthcare professionals in advance care planning for pa.pdf",
+    "page": 4,
+    "heading_tp": 1,
+    "heading_fp": 0,
+    "heading_fn": 0,
+    "missing_headings": [],
+    "extra_headings": [],
+    "snippets": [
+      {
+        "text": "There are some limitations in the study",
+        "native": true,
+        "model": true,
+        "markdown": true
+      },
+      {
+        "text": "Bowman",
+        "native": true,
+        "model": true,
+        "markdown": true
+      }
+    ]
+  },
+  {
+    "document": "上市公司治理结构的实证分析_何浚.pdf",
+    "page": 1,
+    "heading_tp": 2,
+    "heading_fp": 0,
+    "heading_fn": 0,
+    "missing_headings": [],
+    "extra_headings": [],
+    "snippets": [
+      {
+        "text": "530家",
+        "native": true,
+        "model": true,
+        "markdown": true
+      },
+      {
+        "text": "截至1996年底",
+        "native": true,
+        "model": true,
+        "markdown": true
+      }
+    ]
+  }
+]

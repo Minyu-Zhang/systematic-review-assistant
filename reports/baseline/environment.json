@@ -1,0 +1,47 @@
+{
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "PyMuPDF": "1.27.2.3",
+    "PyYAML": "6.0.3",
+    "Pygments": "2.21.0",
+    "certifi": "2026.7.22",
+    "charset-normalizer": "3.5.2",
+    "colorama": "0.4.6",
+    "flatbuffers": "25.12.19",
+    "idna": "3.20",
+    "iniconfig": "2.3.1",
+    "networkx": "3.7",
+    "numpy": "2.5.4",
+    "onnxruntime": "1.31.0",
+    "packaging": "26.3",
+    "pluggy": "1.7.0",
+    "protobuf": "7.36.2",
+    "pymupdf-layout": "1.27.2.3",
+    "pymupdf4llm": "1.27.2.3",
+    "pytest": "9.1.1",
+    "regex": "2026.9.29",
+    "requests": "2.34.2",
+    "tabulate": "0.10.0",
+    "tiktoken": "0.14.0",
+    "urllib3": "2.8.0"
+  },
+  "annotations_sha256": "be1dcacf6d6c27d39f56aaf067f80f3adcb983aaf208286cc0835328c795eb28",
+  "code_sha256": {
+    "src\\clean_text.py": "80c42954907921a89d9617bd7729feeed03c36af83ed884c4970557631ccf03f",
+    "src\\export_model.py": "ce64b331a81d1974be11578c95110b224f002b53a8c54878092dd52778a165c2",
+    "src\\extract_pdf.py": "19ef0a2a1b9831176d5b83212b921ffd2c2436227c1f057aac2cd851521ff215",
+    "src\\info_extract.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src\\layout_pipeline.py": "f3ae4e3441118f194477b09195b972409c4db12cc914b8b5a222bc3eb82f9dd2",
+    "src\\pipeline.py": "b3f4c6d6156be92cfbf9fb68630ded39c958dd99a701f8e13162f62c17ea964d",
+    "src\\quality.py": "4e34ffb83e9174d2821f61885a61aa2af99548b22f7ff7190bee49b38b058271",
+    "src\\section_parse.py": "cd4fcfed09fb427c61c9bd696611e812b122aac7dfdb7093f258309ce24bed38",
+    "src\\__init__.py": "205e2dabc365381c61de58b2dcad528714f288d7728be728590059d31eecd931",
+    "scripts\\evaluate_corpus.py": "eab6e0f3ccfd1558237091bdc585c89983ae16ca1067c58515a9cf10ebc3ee24"
+  },
+  "test_files_sha256": {
+    "tests\\test_layout_pipeline.py": "e4d6b80ba48346e65d4843a744fdb12a26db3f1812e38c5c598f61d37e9b35e0",
+    "tests\\test_pymupdf4llm.py": "d43efc9688a0d56d83ff56f84a8a9d549bb6091a0f0ff771295568c03b549106"
+  },
+  "requirements_lock_sha256": "00859a682c606f13aafd417d1d2ea6f3fa16542fd7490f0b5373ee094d17a797"
+}

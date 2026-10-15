@@ -1,0 +1,170 @@
+{
+  "created_at": "2026-10-15T14:28:43.422755+00:00",
+  "inputs": [
+    {
+      "path": "data/pdf/Econometrica - 2026 - Davis - An Experimental Evaluation of Deferred Acceptance  Evidence From Over 100 Army Officer Labor.pdf",
+      "sha256": "27e3b6e32e67e03431c89c3f91bb87fc86d8977691717c7e9db2bb8531f5f455",
+      "bytes": 284731
+    },
+    {
+      "path": "data/json/Econometrica - 2026 - Davis - An Experimental Evaluation of Deferred Acceptance  Evidence From Over 100 Army Officer Labor.json",
+      "sha256": "a5a5007dc1adb9555d3b89b2f603b59081bb6186df6c123204fecd0bc44c5889",
+      "bytes": 441659
+    },
+    {
+      "path": "data/markdown/Econometrica - 2026 - Davis - An Experimental Evaluation of Deferred Acceptance  Evidence From Over 100 Army Officer Labor.md",
+      "sha256": "6e3f6919f1f48c2d30ee24e50f1197452635a8ee99e5a938efd882457375c209",
+      "bytes": 87183
+    },
+    {
+      "path": "data/pdf/Liu和Emirbayer - 2016 - Field and Ecology.pdf",
+      "sha256": "64bdf14d7898e5835099b27ac84df29df4acb33215b66e4c924bb6328e8997db",
+      "bytes": 1422852
+    },
+    {
+      "path": "data/json/Liu和Emirbayer - 2016 - Field and Ecology.json",
+      "sha256": "a684748abe528868b028471eb95a755f37916d3b079a63164a41fdbad20503a2",
+      "bytes": 755606
+    },
+    {
+      "path": "data/markdown/Liu和Emirbayer - 2016 - Field and Ecology.md",
+      "sha256": "fb5b0b0f11227dafee211874fa90cb1a94fd7123250a87ddb4985f218feb6fc0",
+      "bytes": 5155
+    },
+    {
+      "path": "data/pdf/O'Leary 等 - 2013 - The Boundaries of the Social Work Relationship Revisited Towards a Connected, Inclusive and Dynamic.pdf",
+      "sha256": "6eeeeee72fac298731c6794c18159d177a43e9981b5f93ce8d3a5b2f820e8a23",
+      "bytes": 231913
+    },
+    {
+      "path": "data/json/O'Leary 等 - 2013 - The Boundaries of the Social Work Relationship Revisited Towards a Connected, Inclusive and Dynamic.json",
+      "sha256": "2814f15c126fec4a5130804088b911d64701403a6e1e6b668bf7b391b07ebd49",
+      "bytes": 293636
+    },
+    {
+      "path": "data/markdown/O'Leary 等 - 2013 - The Boundaries of the Social Work Relationship Revisited Towards a Connected, Inclusive and Dynamic.md",
+      "sha256": "dfc728f1a154734ee3d9e68e2ded852386b2805426b3ef2c380c602faa6777e4",
+      "bytes": 54609
+    },
+    {
+      "path": "data/pdf/Hu 等 - 2010 - Factors that influence the participation of healthcare professionals in advance care planning for pa.pdf",
+      "sha256": "7246ab5e988fa07bde701a92f4c274851f376cb134b2b1537241b1ef43c1bbfc",
+      "bytes": 132188
+    },
+    {
+      "path": "data/json/Hu 等 - 2010 - Factors that influence the participation of healthcare professionals in advance care planning for pa.json",
+      "sha256": "29e71241da3b7e88116d3a760fcc16be74b7f9a2312d0848a224eeae271c32f9",
+      "bytes": 147166
+    },
+    {
+      "path": "data/markdown/Hu 等 - 2010 - Factors that influence the participation of healthcare professionals in advance care planning for pa.md",
+      "sha256": "804a6b248db0b8fdbd385f5f853d0e5f0e55224f52a28120c87886b3433e99d2",
+      "bytes": 27818
+    },
+    {
+      "path": "data/pdf/从“职业”到“知识”_医学社会学的转向和重构_郦菁.pdf",
+      "sha256": "9088a34e5b727e60bad24da03d136da8b0aa8899f480ead903fd37502f66b9f9",
+      "bytes": 1917868
+    },
+    {
+      "path": "data/json/从“职业”到“知识”_医学社会学的转向和重构_郦菁.json",
+      "sha256": "3d6db50c8a8fe6c3752eb5c858df186f0e839d4d90030f576cae3fd6a040ff1e",
+      "bytes": 274971
+    },
+    {
+      "path": "data/markdown/从“职业”到“知识”_医学社会学的转向和重构_郦菁.md",
+      "sha256": "6c74c94c006d4878641e176d64bba944f8aae0504d615d1dc1603107cc0e9594",
+      "bytes": 57319
+    },
+    {
+      "path": "data/pdf/在临时家属与就诊规划师之间...的情感劳动与“专业性”建构_姚泽麟.pdf",
+      "sha256": "b00216cf5e978edab4fdcd312abd30d48db3170773949a7e5e758a38a30405a7",
+      "bytes": 590985
+    },
+    {
+      "path": "data/json/在临时家属与就诊规划师之间...的情感劳动与“专业性”建构_姚泽麟.json",
+      "sha256": "bd0c506309dab1a05daac56eba0db0e183f947dcea4eae0016f5596e439f2857",
+      "bytes": 253566
+    },
+    {
+      "path": "data/markdown/在临时家属与就诊规划师之间...的情感劳动与“专业性”建构_姚泽麟.md",
+      "sha256": "2669e71a034cb585350b590c9e5c0cde033229470d9bef964cd24eafdce1d9c2",
+      "bytes": 55851
+    },
+    {
+      "path": "data/pdf/上市公司治理结构的实证分析_何浚.pdf",
+      "sha256": "c2ed79211fd3dbfccf12c064ba5e478e6ecb6d38ff7ba6962aad9378866f13bf",
+      "bytes": 395037
+    },
+    {
+      "path": "data/json/上市公司治理结构的实证分析_何浚.json",
+      "sha256": "5ce81864245f7f5f5e8de6a1b9c88c4206404f3e99036c0e5e25e05d842cbb7d",
+      "bytes": 132950
+    },
+    {
+      "path": "data/markdown/上市公司治理结构的实证分析_何浚.md",
+      "sha256": "be23a35094d17978c1e68ae0fe6ee7456b56f263803eb85a4a801f8f05906d7e",
+      "bytes": 30384
+    },
+    {
+      "path": "data/pdf/Abbott - 1995 - Boundaries of Social Work or Social Work of Boundaries The Social Service Review Lecture.pdf",
+      "sha256": "c5df574d26d2647d5b88f1771a87ba973f25eabf97e6b25068357f46f8c4c5e5",
+      "bytes": 3020859
+    },
+    {
+      "path": "data/json/Abbott - 1995 - Boundaries of Social Work or Social Work of Boundaries The Social Service Review Lecture.json",
+      "sha256": "ff4b759941d91c450acde9cd58940f6ade3ec73a5f8e23d4121bb6d3be5fb6c7",
+      "bytes": 292651
+    },
+    {
+      "path": "data/markdown/Abbott - 1995 - Boundaries of Social Work or Social Work of Boundaries The Social Service Review Lecture.md",
+      "sha256": "1d7139260537d296ad913e05735c4ac3f5a50c9382c502b16fbfd22612c78869",
+      "bytes": 6769
+    },
+    {
+      "path": "data/pdf/King 等 - 2015 - Contested professional role boundaries in health care a systematic review of the literature.pdf",
+      "sha256": "f3a487226c718887c5b4b571b12af9bbab92556ab45cae12f43ede6d14320595",
+      "bytes": 679915
+    },
+    {
+      "path": "data/json/King 等 - 2015 - Contested professional role boundaries in health care a systematic review of the literature.json",
+      "sha256": "8643b573f57012ce3885d300366dccce99646d5cbfbfd14fab56b1cf85f41f1d",
+      "bytes": 226294
+    },
+    {
+      "path": "data/markdown/King 等 - 2015 - Contested professional role boundaries in health care a systematic review of the literature.md",
+      "sha256": "0e700df8d0e8f868900eb7f8af38f5caff44fe20142548c4c45bdb9d5fb36f4b",
+      "bytes": 42387
+    },
+    {
+      "path": "data/pdf/技术效率、技术进步与生产率增长_基于DEA的实证分析_颜鹏飞.pdf",
+      "sha256": "f9da877e86f22414e39ef707535b21cb830f64af3ce7a3fa5182eafe5c88ebb5",
+      "bytes": 532336
+    },
+    {
+      "path": "data/json/技术效率、技术进步与生产率增长_基于DEA的实证分析_颜鹏飞.json",
+      "sha256": "aa0ccad6697da494a033dc0e8a6e90daaf2f452ed253489c360761480aa37e89",
+      "bytes": 242960
+    },
+    {
+      "path": "data/markdown/技术效率、技术进步与生产率增长_基于DEA的实证分析_颜鹏飞.md",
+      "sha256": "69f495e14d552a97507a23c28c1e6ff554302d24e4f1e43bd6738c0d07c764d0",
+      "bytes": 48602
+    },
+    {
+      "path": "data/pdf/Heinz和Laumann - 1978 - The Legal Profession Client Interests, Professional Roles, and Social Hierarchies.pdf",
+      "sha256": "fcb0979b05ee8a0ab57f22b7daadb21d28b422d4aa215964fcbc269f504d545b",
+      "bytes": 1140657
+    },
+    {
+      "path": "data/json/Heinz和Laumann - 1978 - The Legal Profession Client Interests, Professional Roles, and Social Hierarchies.json",
+      "sha256": "b3f1b2e61f4919a93d4fdbada8d190b811aa4a264cc085fb631e7416cb97c58d",
+      "bytes": 547591
+    },
+    {
+      "path": "data/markdown/Heinz和Laumann - 1978 - The Legal Profession Client Interests, Professional Roles, and Social Hierarchies.md",
+      "sha256": "cb8fceb876929291216b3da4ee549af4b71d301c509fcd091418f3501dd264fc",
+      "bytes": 8045
+    }
+  ]
+}

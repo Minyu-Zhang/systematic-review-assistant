@@ -230,3 +230,10 @@ data/json/
 
 # macOS
 .DS_Store
+
+.venv/
+
+# Reproducible parsing experiments (keep source annotations/reports in Git)
+.venv-review/
+data/processed*/
+tmp/

@@ -90,6 +90,27 @@ systematic-review-assistant/
 
 ## Project Status
 
+### Reproducible parsing baseline (2026-10-15)
+
+An evidence-preserving pipeline is available alongside the original prototype.
+It archives native page/block/line/span text and layout, checks each page against
+PyMuPDF4LLM output, and exports concise model text with local provenance.
+Markdown is optional. OCR and research-information extraction are not implemented.
+
+```powershell
+& .venv-review/Scripts/python.exe -X utf8 -m pytest -q
+& .venv-review/Scripts/python.exe -X utf8 -m src.pipeline --markdown
+& .venv-review/Scripts/python.exe -X utf8 -m scripts.evaluate_corpus --tokens
+```
+
+For environment setup, output schema, measured token counts, known limitations,
+and the 11-document / 167-page baseline, see
+[the parsing report](docs/parsing-baseline-2026-10-15.md).
+Machine-readable results are in `reports/baseline/`; local full-text outputs are
+in `data/processed/`. `requirements-lock.txt` records the tested environment.
+
+The status and to-do list below describe the earlier June prototype.
+
 **Current stage:**
 
 - Design completed

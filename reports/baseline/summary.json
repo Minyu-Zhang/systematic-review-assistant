@@ -1,0 +1,27 @@
+{
+  "documents": 11,
+  "pages": 167,
+  "archive_recall_all_one": true,
+  "native_order_pages": 138,
+  "layout_error_pages": 0,
+  "ocr_review_pages": 24,
+  "annotated_pages": 6,
+  "heading_tp": 13,
+  "heading_fp": 0,
+  "heading_fn": 3,
+  "heading_precision": 1.0,
+  "heading_recall": 0.8125,
+  "snippet_total": 15,
+  "snippet_model_retained": 15,
+  "snippet_markdown_retained": 13,
+  "tokenizer": "cl100k_base",
+  "token_totals": {
+    "legacy_json_tokens": 1013847,
+    "legacy_markdown_tokens": 129401,
+    "native_text_tokens": 195482,
+    "model_text_tokens": 187234,
+    "same_text_json_tokens": 196802,
+    "same_text_markdown_fence_tokens": 187289,
+    "archive_json_tokens": 14224942
+  }
+}

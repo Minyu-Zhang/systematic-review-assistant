@@ -1,0 +1,12 @@
+﻿file,pages,native_chars,legacy_cleaned_chars,legacy_markdown_chars,legacy_markdown_character_recall,fresh_markdown_character_recall,archive_character_recall,model_chars,model_character_recall,native_order_pages,ocr_review_pages,layout_error_pages,proposed_sections,source_unicode_issues,legacy_cleaned_unicode_issues,native_standalone_numbers,legacy_cleaned_standalone_numbers,native_repeated_line_instances,repeated_margin_lines,duplicate_position_lines,margin_page_number_lines,rejected_heading_candidates,excluded_line_count,model_table_boxes,legacy_markdown_table_rows
+Econometrica - 2026 - Davis - An Experimental Evaluation of Deferred Acceptance  Evidence From Over 100 Army Officer Labor.pdf,22,89164,87909,85571,0.9327,0.9327,1.0,89657,0.9897,21,1,0,20,185,0,81,0,294,24,0,21,12,45,5,10
+Liu和Emirbayer - 2016 - Field and Ecology.pdf,19,145388,144731,3991,0.0219,0.0219,1.0,75959,0.5118,18,1,0,5,551,0,34,0,992,95,887,32,6,1014,0,0
+"O'Leary 等 - 2013 - The Boundaries of the Social Work Relationship Revisited Towards a Connected, Inclusive and Dynamic.pdf",19,55951,55951,53775,0.9571,0.9571,1.0,55849,0.9881,19,0,0,13,0,0,0,0,26,18,0,0,3,18,0,0
+Hu 等 - 2010 - Factors that influence the participation of healthcare professionals in advance care planning for pa.pdf,4,26213,26185,27398,1.0,1.0,1.0,26521,0.9942,0,0,0,11,11,0,3,0,19,11,0,3,19,14,4,29
+从“职业”到“知识”_医学社会学的转向和重构_郦菁.pdf,12,24146,24088,26124,0.9998,0.9998,1.0,28702,0.9936,11,0,0,10,0,0,24,0,91,11,0,24,3,35,0,0
+在临时家属与就诊规划师之间...的情感劳动与“专业性”建构_姚泽麟.pdf,11,18010,17801,21411,1.0,1.0,1.0,21742,0.9904,8,0,0,12,0,0,73,0,123,9,0,20,11,29,1,11
+上市公司治理结构的实证分析_何浚.pdf,8,10025,9399,11984,1.0,1.0,1.0,12660,1.0,2,8,0,12,360,0,89,0,172,2,0,8,164,10,7,47
+Abbott - 1995 - Boundaries of Social Work or Social Work of Boundaries The Social Service Review Lecture.pdf,19,56119,54736,5337,0.079,0.079,1.0,53844,0.9569,19,1,0,2,456,0,0,0,54,74,0,0,5,74,0,0
+King 等 - 2015 - Contested professional role boundaries in health care a systematic review of the literature.pdf,9,40337,40223,41796,0.9994,0.9994,1.0,41575,0.9913,4,0,0,8,0,0,47,0,69,13,0,0,18,13,5,151
+技术效率、技术进步与生产率增长_基于DEA的实证分析_颜鹏飞.pdf,11,24132,23254,25621,0.9902,0.9902,1.0,28787,0.9916,3,9,0,10,808,0,14,0,406,21,0,11,206,32,5,44
+"Heinz和Laumann - 1978 - The Legal Profession Client Interests, Professional Roles, and Social Hierarchies.pdf",33,99948,97014,6309,0.0534,0.0534,1.0,98277,0.9609,33,4,0,2,825,0,86,0,277,153,0,27,78,180,0,0

@@ -1,0 +1,24 @@
+{
+  "version": "0.1",
+  "method": "Manually transcribed by the coding assistant from Poppler-rendered PDF pages, 2026-10-15. Development smoke set, not independent expert validation or a held-out benchmark.",
+  "normalization": "NFKC, lowercase, alphanumeric only; ligatures/spacing ignored. Headings are exhaustive only on the listed pages, excluding article titles, authors, Keywords and table captions.",
+  "documents": [
+    {
+      "file_prefix": "Hu ",
+      "pages": [
+        {"page": 1, "headings": ["Abstract", "Introduction"], "snippets": ["600 physicians and nurses", "Taiwan"]},
+        {"page": 2, "headings": ["Methods", "Study design and population", "Measurement", "1. Knowledge about palliative care", "2. Knowledge about the Natural Death Act", "3. Attitudes about the Natural Death Act", "4. Frequency of ethical dilemmas", "Statistical analysis", "Results", "Discussion"], "snippets": ["413 (68.8%)", "153 physicians (37%) and 260 nurses (63%)"]},
+        {"page": 3, "headings": [], "snippets": ["Table 1", "Table 2", "Table 3", "78(42.4)", "30(13.1)"], "table_note": "Visual check: Table 1 Hospice row participation 78(42.4), non-participation 30(13.1). Snippet retention does NOT verify cell alignment."},
+        {"page": 4, "headings": ["References"], "snippets": ["There are some limitations in the study", "Bowman"]}
+      ]
+    },
+    {
+      "file_prefix": "上市公司",
+      "pages": [{"page": 1, "headings": ["一、上市公司的股权结构", "1∙股权结构概况"], "snippets": ["530家", "截至1996年底"], "note": "Displayed punctuation differs from the embedded text encoding; numeric body evidence must survive."}]
+    },
+    {
+      "file_prefix": "Liu",
+      "pages": [{"page": 2, "headings": ["Abstract"], "snippets": ["This article offers a theoretical comparison", "Pierre Bourdieu and the Chicago School of sociology"], "note": "The visible title/author area and OCR layer have errors; preserving text alone does not certify OCR accuracy."}]
+    }
+  ]
+}
