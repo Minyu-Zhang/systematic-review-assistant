@@ -224,6 +224,7 @@ __pycache__/
 # Data
 data/pdf/
 data/json/
+data/markdown/
 
 # VS Code
 .vscode/

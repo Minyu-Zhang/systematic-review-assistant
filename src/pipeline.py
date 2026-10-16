@@ -4,6 +4,7 @@ import argparse
 from pathlib import Path
 
 from .export_model import export_document
+from .info_extract import export_screening
 from .layout_pipeline import parse_pdf, save_json
 
 
@@ -26,6 +27,7 @@ def main():
             out.mkdir(parents=True, exist_ok=True)
             save_json(out / "document.json", doc)
             export_document(doc, out, args.exclude_references)
+            export_screening(doc, out)
             if args.markdown:
                 md = "\n\n".join(f"<!-- physical page {p['page_number']} -->\n{p['layout']['markdown'] or ''}" for p in doc["pages"])
                 (out / "candidate.md").write_text(md, encoding="utf-8")

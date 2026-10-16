@@ -189,6 +189,8 @@ def test_cli_exports_valid_files_and_reports_partial_failure(tmp_path, monkeypat
     assert main() == 1
     assert len(list(out.glob("*/document.json"))) == 1
     assert "Useful evidence" in next(out.glob("*/model.txt")).read_text(encoding="utf-8")
+    assert next(out.glob("*/screening.json")).is_file()
+    assert next(out.glob("*/screening.md")).is_file()
     assert json.loads((out / "run-errors.json").read_text())[0]["file"] == "bad.pdf"
 
 
