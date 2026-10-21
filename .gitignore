@@ -238,3 +238,6 @@ data/markdown/
 .venv-review/
 data/processed*/
 tmp/
+
+# Local review workbooks and full-text-derived deliverables
+/outputs/

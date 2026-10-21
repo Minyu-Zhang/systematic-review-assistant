@@ -1,29 +1,111 @@
 # systematic-review-assistant
-## Overview
-An AI-assisted workflow for systematic literature reviews, including structured information extraction, topic discovery, relationship analysis, and knowledge mapping.
-The project focuses on transforming unstructured academic literature (PDFs) into structured representations that can be used for literature mapping, topic discovery, relationship analysis, and knowledge visualization.
-_**The goal is not to automate literature reviews**_, but to assist researchers in organizing, exploring, and understanding large collections of academic publications.
 
-The project is expected to be used in social sciences (e.g., sociology, demography/population studies, economics, and computational social science).
+## 项目目标
 
-### Planned General Workflow
+**用户输入一组感兴趣的中英文论文或文本，系统自动发现论文之间的关联，归纳输入文献中的共识与差异，并提供可追溯的证据，为进一步提出研究问题提供线索。**
+
+面向社会科学研究，例如社会学、人口学、经济学与计算社会科学。研究问题可以在探索过程中形成，也可以作为可选输入，让分析更聚焦。最终产品的默认入口是上传文献；提前制定纳入标准、逐篇标注或人工指定文献分组都不是使用前提。
+
+用户可以查看原文依据、修正分析和继续追问。人工标注用于开发阶段验证模型效果；产品运行时由系统完成提取、比较与综合。
+
+### 预期输出
+
+| 输出 | 用户应得到的内容 |
+| --- | --- |
+| 关系总览 | 哪些论文相关、围绕哪些议题，以及关系类型与理由 |
+| 议题详情 | 共识、结论/机制/定义/情境差异、互补及暂不可比较项，并保留适用条件 |
+| 证据说明 | 支撑每项判断的论文、原文片段、定位信息和证据限制 |
+| 问题线索 | 从比较中提出的后续问题、提出依据及需要继续查证的内容 |
+
+2026-10-21 已确认以上四部分作为综合交付内容。关系图与文字是期望方向；最终采用 Markdown、图片、网页或其他形式，留到交付阶段决定。当前 JSON 与 Markdown 仅用于开发记录、核对和复现，不锁定产品形式。
+
+这里的共识限定于**本次输入文献**。系统生成的问题线索须与作者明确提出的局限区分，并标明其推测性质；判断是否具有领域层面的新颖性，还需要扩大文献检索。
+
+## 目标流程与设计
+
+以下是目标设计，尚未全部实现。先验证单模型直接分析基线；只有效果、成本或覆盖问题需要时，再增加阶段或模型。多阶段流程用于明确职责，不要求每个节点独立调用一次 API。
 
 ```text
-PDF
-↓
-Structured JSON  # Literature Structure Extraction
-↓
-Embeddings
-↓
-Topic Clustering / Relationship Discovery
-↓
-Visualization  # Literature Network / Knowledge Graph
+输入中英文 PDF / 文本（研究兴趣描述可选）
+  → 解析、去重、质量标记与来源定位
+  → 提取议题、具体论点、研究背景及支撑证据
+  → 发现相关议题与可比较论点
+  → 判断一致、差异、互补或暂不可比较
+  → 围绕议题综合多篇论文的证据
+  → 输出共识、差异、关联解释与待探索问题
+  → 用户查看原文、反馈或追问（可选）
 ```
 
-## Current Scope (v1.0)
-The first development stage focuses on structured information extraction from academic articles.
+### 分析单元与模块职责
 
-### Literature Schema v0.1(2026-6-4)
+- **解析与来源档案**：保留原文和定位，标记缺字、表格及脚注等质量问题；纯文本输入计划使用段落或字符范围定位。
+- **研究背景与论点提取**：在文献级字段基础上，提取具体主张、研究对象、情境、方法和证据，区分作者自身论点与转述他人的观点。
+- **关联检索**：保留 TF-IDF 基线，接入现成多语言嵌入模型，寻找值得比较的论文与论点。先评价预训练模型，再根据错误与标注条件决定是否微调。
+- **关系分析与综合**：拟用 LLM 提取论点、解释关系并生成有证据的跨论文综合。DeepSeek 与智谱 GLM 都是候选；先使用相同中英文材料做小规模对照。提供方的阅读产品与模型 API 不预设效果等同。
+- **报告与反馈**：按议题组织结果，显示支持与反对证据、适用条件、覆盖范围及不确定项；后续再增加交互界面和关系图。
+
+嵌入模型和生成式 LLM 分别承担候选检索与内容分析。SentenceTransformer 路线不以调用 DeepSeek API 为前提。两两相似度提供候选，多篇论文的共识需要对同一命题及其上下文逐项核对；不能仅由相似度或聚类成员关系推导。
+
+六篇试点先覆盖全部 15 个文献对，不用向量阈值提前排除论文。多语言嵌入模型作为后续检索对照，不是首份报告的启动条件。重复提交的输入和结果应缓存；降低 PDF 文件体积不直接等于减少文本 token。正文、限定条件和反向证据的保留优先于激进摘要压缩。
+
+### Skill 与使用入口
+
+现有 skill 可以指导论文要点提取、比较和综合；可用性需要用这六篇材料验证。skill 的推理由其宿主助手执行，独立项目则需要接入模型服务或本地模型。API 数量不决定交付形式。
+
+个人使用时可由开发者在本地配置服务；多人产品可由后端统一管理凭据、用量和预算，也可提供用户自带凭据的方式。终端用户不必逐环节操作 API。入口、凭据方式和交互界面留待后续确定，当前优先验证内容质量。候选 skill 与选择依据见[本轮决定与试点记录](docs/pilot-decisions-2026-10-21.md)。
+
+### 关系判断的基本要求
+
+1. 相同词汇或相近主题不直接等于观点一致；不同研究对象或概念定义可能使结论不可直接比较。
+2. 将结论分歧、机制差异、情境差异与方法差异分开记录，一组论文可以同时存在多种关系。
+3. 区分论文自身证据与对同一来源的重复引用；多篇转述同一观点不能直接视为多项独立研究的支持。
+4. 每项综合结论连接到论点与原文；来源 ID 有效性和“原文是否支持判断”分别检查。
+5. 保留孤立论文和证据不足项；显示已处理、失败或被排除的内容，避免把局部检索结果描述为完整覆盖。
+
+## 当前进度（2026-10-21）
+
+| 模块 | 已完成或已有内容 | 尚未完成 |
+| --- | --- | --- |
+| PDF 解析 | 11 篇、167 页基线；原生文本、版面、页码与行号档案，模型文本及来源映射 | OCR；已确认的缺字、表格与脚注问题仍待定点改进 |
+| 文献信息摘录 | 11 份 screening.json，提供题名候选、摘要/开篇及章节材料 | 没有自动纳入决定；筛选不是新产品主流程的必经环节 |
+| LLM 全文抽取 | 有结构化字段、来源校验及调用记录代码 | 最近运行完成 0 篇、失败 2 篇、待处理 9 篇；SSL 与 API 额度问题阻碍运行 |
+| 字段级文献关联 | 有 TF-IDF 与平均连接层次聚类代码 | 尚无成功全文抽取后形成的实质结果 |
+| 原文片段比较 | 328 个窗口、18 对候选、展示 12 对；TF-IDF 与候选多样性选择 | 无跨语言语义对齐、论点关系判断或共识归纳 |
+| 定点核查与评价材料 | 12 对初评、6 页 PDF 视觉核查；XLSX 标注示例 | 正式用户标注完成情况待反馈；现有表不构成完整效果评测集 |
+| 六篇指定试点 | 复用 111 页档案，离线准备 35 个文本块、15 个文献对和相同中英材料的直接分析输入；助手初评含 17 条要点及 15 对初步比较 | 初评基于选读片段，未经用户验证；GLM/DeepSeek 均未调用，预算未确认 |
+| 多语言模型与综合报告 | 已明确设计方向 | 尚未接入模型、训练或微调；完整自动综合流程尚未实现 |
+
+`src.pipeline` 当前只负责解析和材料导出；`src.contrastive_nlp` 是独立实验，直接读取全部 11 篇解析档案，不依赖 LLM 全文抽取。当前候选报告用于检查检索结果，尚不能作为论文共识与差异报告。
+
+### 下一阶段：小规模完整流程验证
+
+使用用户已指定的 **六篇论文**，跑通“输入 → 论点提取 → 关联发现 → 共识与差异综合 → 带证据的报告”。先将单模型直接分析与逐篇提取后比较进行对照，模型比较和片段质量改进围绕最终内容质量开展。选定名单见 [pilot-six-papers.json](configs/pilot-six-papers.json)。
+
+开发样本选取用于验证功能；最终用户可以直接输入自己的论文集合。首轮无需训练模型，也不要求用户提前提出完整研究问题。随后用中英混合样本验证跨语言能力。
+
+## 下一步计划
+
+以下均为待执行工作，除已完成的目标确认与文档更新外，不代表已有功能。任务细项、交付物、依赖关系与验收方式见[项目实施计划](docs/project-plan-2026-10-19.md)。
+
+| 阶段 | Agent 工作 | User 工作 | 前置条件与交付物 |
+| --- | --- | --- | --- |
+| P0 样本与内容规格 | 已记录六篇指定样本和四类交付内容；继续核对论点及关系字段 | 反馈初步比较是否有用，可补充兴趣方向 | 六篇名单已确定；已有来源清单，无需先有人工作业标签 |
+| P1 可用证据单元 | 修复已知片段污染，保留上下文、质量标记和稳定来源；设计文本输入适配 | 抽查少量疑难片段 | 样本和现有解析档案；交付可定位的片段集和回归案例 |
+| P2 论点提取 | 扩展论点结构，接入并验证 LLM 服务；记录证据、版本、失败与调用量 | 配置可用服务和预算，抽查提取是否忠实 | 可用证据与 API 运行条件；交付结构化论点及来源 |
+| P3 多语言关联检索 | 对同一材料比较 TF-IDF 与现成多语言向量；保留低相似度及孤立项作检查 | 判断抽样关联是否有意义 | 模型可获取；片段阶段即可准备，之后绑定论点；交付候选关系及运行配置 |
+| P4 关系判断 | 结合双方原文与背景，判断一致、差异、互补和不可比较 | 复核代表性关系及疑难案例 | 已提取论点和候选关系；交付关系、理由与双方证据 |
+| P5 多论文综合 | 按议题汇总证据，生成共识、差异、覆盖说明和研究问题线索 | 评价综合是否准确、是否帮助继续提问 | 关系结果与来源；交付可追溯的综合内容，开发记录暂用 JSON/Markdown，最终形式待定 |
+| P6 评价与迭代 | 扩展标注规则、构建独立评价集，按语言组合与错误类型分析 | 标注抽样结果，复核分歧和报告价值 | 首份完整报告；交付评测记录及下一轮改进决定 |
+| P7 使用入口 | 串联各阶段，加入缓存、失败恢复和进度说明；支持文本及 PDF | 试用直接输入文献的流程 | 报告质量经过首轮验证；交付统一入口与使用说明 |
+| 后续扩展 | 根据实测结果推进微调、规模扩展、文献矩阵与可视化 | 确定价值优先级，补充可靠标签 | 明确的质量或使用瓶颈；不以固定时间表提前承诺模型效果 |
+
+验收重点是：关联是否有价值、共识与差异是否被原文支持、是否混淆概念或研究条件、报告能否帮助提出后续问题。开发时的人工评价属于质量验证，最终产品的分析流程不依赖用户逐条标注。
+
+## 数据结构
+
+### 文献级 Schema v0.1（2026-06-04）
+
+保留最初设计作为文献背景结构。字段是否已实现、是否成功提取应以具体模块和运行结果为准。
 
 ```text
 document_metadata
@@ -76,123 +158,136 @@ sections
 citations
 ```
 
-_The schema is designed to capture core research elements from academic literature and provide a structured foundation for subsequent topic clustering, relationship discovery, and knowledge mapping._
+`results.research_gap` 记录作者明确提出的研究不足。系统根据多篇论文生成的问题线索计划单独存放，并连接其推导依据。
 
-## Directory Structure(in Progress)
-```text
-systematic-review-assistant/
+### 论点与关系结构（计划新增）
 
-├── data/
-├── src/
-├── tests/
-└── README.md
-```
+文献级字段提供背景，下一阶段增加可跨论文比较的记录：
 
-## Project Status
+| 记录 | 拟包含字段 |
+| --- | --- |
+| 论点 | `claim_id`、`document_id`、命题、原文语言、概念及定义、研究对象/时期/地区、方法、条件与限定 |
+| 论点来源 | 作者自身发现/理论主张/文献转述/不确定、被引用来源（能够识别时）、原文片段、页码与行 ID 或文本范围 |
+| 关系 | 双方论点 ID、比较维度、关系类型、可比性说明、证据引用、不确定原因 |
+| 议题综合 | 议题 ID、相关论文与论点、共同认识、差异与互补、支持和反向证据、覆盖范围 |
+| 问题线索 | 候选问题、触发该问题的关系和证据、推测说明、需要进一步查证的内容 |
 
-### Reproducible parsing baseline (2026-10-15)
+字段、枚举及版本管理在 P0/P2 中细化。关系和综合结果必须保留到原文的连接，不能只保留模型生成的摘要。
 
-An evidence-preserving pipeline is available alongside the original prototype.
-It archives native page/block/line/span text and layout, checks each page against
-PyMuPDF4LLM output, and exports concise model text with local provenance.
-Markdown is optional. OCR is not implemented; research-information extraction is described below.
+## 现有代码与运行方式
+
+下面是**当前可用模块的入口**，并非已经实现的完整产品命令。环境安装与复现说明见[解析基线报告](docs/parsing-baseline-2026-10-15.md)；`requirements-lock.txt` 保存已记录的环境依赖。
+
+### 1. PDF 解析与本地摘录
+
+从项目根目录运行，默认输入 `data/pdf/`，输出 `data/processed/`：
 
 ```powershell
-& .venv-review/Scripts/python.exe -X utf8 -m pytest -q
 & .venv-review/Scripts/python.exe -X utf8 -m src.pipeline --markdown
-& .venv-review/Scripts/python.exe -X utf8 -m scripts.evaluate_corpus --tokens
 ```
 
-### Initial screening extracts
+每篇论文目录包含：
 
-`src.pipeline` also writes `screening.json` and `screening.md` beside each
-`document.json`. They collect a title candidate, explicitly labeled abstract and
-keywords, and the proposed text of each section. PDF-text modules retain native
-line IDs and physical page numbers so a reader can check the PDF; a title taken
-from PDF metadata is marked as such.
-If no abstract label is found, an opening excerpt is provided for manual review.
-These files do not decide whether a paper should be included in a review.
+- `document.json`：原生页、块、行、span 文本与版面档案。
+- `model.txt`、`model.provenance.json`：供后续分析使用的文本及来源映射。
+- `screening.json`、`screening.md`：题名候选、标识出的摘要/关键词、开篇摘录和章节材料。
+- `candidate.md`：使用 `--markdown` 时导出的版面转换结果，供对照检查。
 
-To generate screening extracts from existing archives without parsing PDFs again:
+PDF 来源使用物理页码与原生行 ID；取自 PDF 元数据的题名会标注来源。章节与阅读顺序仍可能出错，OCR 尚未实现。
+
+已有解析档案时，可单独重新生成摘录：
 
 ```powershell
 & .venv-review/Scripts/python.exe -X utf8 -m src.info_extract --input data/processed
 ```
 
-### Full-text extraction and exploratory associations
-
-The second screening pass reads all existing `model.txt` files with their native
-line IDs. It asks an LLM for the research fields in Schema v0.1 and leaves every
-field for human review. All 11 test articles are included. Set `OPENAI_API_KEY`
-in the process environment or in the project's Git-ignored `.env` file before
-the API run; the key is never written to results. The default model is
-`gpt-4o-mini` and can be changed with `--model`.
-
-```powershell
-& .venv-review/Scripts/python.exe -X utf8 -m src.fulltext_extract --estimate-only
-& .venv-review/Scripts/python.exe -X utf8 -m src.fulltext_extract
-```
-
-The first command writes `data/processed/fulltext-estimate.json`: a local
-approximation of input tokens, not API usage. The second writes `fulltext.json`
-(structured fields, evidence line IDs, review flags), `fulltext.md` (reading
-copy), and `fulltext-usage.json` (API-reported tokens) beside each article's
-archive. The usage file retains calls from retries. At the root of
-`data/processed`, `fulltext-run.json` totals the API
-usage, while `fulltext-associations.json` and `.md` show TF-IDF similarity and
-exploratory average-link groups from selected extracted fields. Repeated runs
-reuse matching extracts; `--force` requests new API calls. An invalid model
-answer can still leave `fulltext-usage.json`, so token use remains visible.
-The run stops when the API reports exhausted credits and records the remaining
-document count in `fulltext-run.json`.
-Line-ID checks verify that a cited source exists; researchers must still check
-whether it supports the claimed value and make the second inclusion decision.
-The test similarity has no bilingual alignment or stopword filtering; its groups
-are a pipeline check, not substantive findings.
-
-### Direct text comparison experiment
-
-`src.contrastive_nlp` compares short, source-linked text windows directly from
-the 11 PDF archives. It uses local TF-IDF and diverse candidate selection;
-the full-text LLM extract and API key are not required.
+### 2. TF-IDF 原文片段比较
 
 ```powershell
 & .venv-review/Scripts/python.exe -X utf8 -m src.contrastive_nlp
 ```
 
-Review `data/processed/contrastive-pairs.md` with the PDFs; the matching JSON
-retains every native line ID. Scores suggest passages to compare, not agreement,
-contradiction, or research gaps. The [experiment report](docs/contrastive-experiment-2026-10-16.md)
-records results, false positives, and the external methods used.
+输出 `data/processed/contrastive-pairs.json` 与 `.md`。JSON 保留来源行；相似度用于发现候选，独有词仅表示词汇差异。当前英文词与中文字符二元组没有跨语言语义对齐。
 
-For environment setup, output schema, measured token counts, known limitations,
-and the 11-document / 167-page baseline, see
-[the parsing report](docs/parsing-baseline-2026-10-15.md).
-Machine-readable results are in `reports/baseline/`; local full-text outputs are
-in `data/processed/`. `requirements-lock.txt` records the tested environment.
+默认最多展示 12 对片段。这是实验展示限制，后续综合模块需要保留更完整的候选与证据覆盖记录。已有结果与误配分析见[片段比较实验](docs/contrastive-experiment-2026-10-16.md)和[定点核查报告](docs/contrastive-pairs-review-2026-10-19.md)。
 
-The status and to-do list below describe the earlier June prototype.
+### 3. LLM 全文结构化抽取实验
 
-**Current stage:**
+现有实现调用 OpenAI Responses API，默认模型参数为 `gpt-4o-mini`。这是旧实验的代码配置；DeepSeek 提供方适配、论点级提取与自动综合还在计划中，不能仅替换服务地址就假定接口兼容。
 
-- Design completed
-- Primary PDF processing(from PDF parsing to JSON export) completed and tested
-- Other functions(e.g., OCR/LLM using) is in progress
-- Primary text-cleaning process completed
+本地 token 估算不发起模型调用：
 
-**To-do list**
-1. extract_pdf:
-- OCR pipeline(not necessary temporarily)
-2. clean_text:
-- Section parsing
-3. other:
-- Information extraction/LLM-based structure extraction
-- Schema construction
-- Literature matrix generation
-- Embedding generation
-- Topic clustering
-- Relationship discovery
-- Knowledge graph visualization
+```powershell
+& .venv-review/Scripts/python.exe -X utf8 -m src.fulltext_extract --estimate-only
+```
+
+实际运行需要在进程环境或被 Git 忽略的 `.env` 中配置 `OPENAI_API_KEY`，并具备可用网络和额度：
+
+```powershell
+& .venv-review/Scripts/python.exe -X utf8 -m src.fulltext_extract
+```
+
+成功时按设计导出 `fulltext.json`、`fulltext.md`、`fulltext-usage.json`，并生成基于抽取字段的 `fulltext-associations.json` / `.md`。最近运行尚未成功完成任何论文的全文抽取；具体失败见 `data/processed/fulltext-run.json`。
+
+`fulltext-estimate.json` 是本地估算；`fulltext-usage.json` 与 `fulltext-run.json` 记录 API 返回的用量及运行情况。无效答案也可能留下用量记录。重复运行复用匹配的抽取缓存，`--force` 请求重新抽取。来源校验目前只能检查行 ID 是否存在，尚不能自动证明其支持生成的判断。
+
+### 4. 六篇试点的离线准备与工作记录
+
+```powershell
+& .venv-review/Scripts/python.exe -B -X utf8 -m src.pilot_prepare --output outputs/pilot-2026-10-21
+& .venv-review/Scripts/python.exe -B -X utf8 -m scripts.experiments.render_pilot_review
+```
+
+准备命令仅读取现有档案并保存来源行、分块、文献对及待调用任务，不发网络请求。已有准备结果时拒绝覆盖；独立重跑应选择新的运行目录。第二条命令要求该目录已有助手撰写的 `assistant-review.json`，只校验和渲染工作记录，不会自动提取或推理。
+
+本地结果位于 [outputs/pilot-2026-10-21/](outputs/pilot-2026-10-21/)：`manifest.json` 记录样本和哈希；`requests/` 是尚未绑定模型参数的任务输入；`working-notes.md` 是助手基于选读片段撰写的初步比较；`review-evidence.json` 保存原文证据。初评使用当前对话助手的推理能力，不是 GLM/DeepSeek 的 API 实验，也不是无模型的规则分析。
+
+用户已选择 GLM 和 DeepSeek 各做一次小规模对照。当前无外部 API 调用，未获得费用上限及具体运行范围确认。凭据配置说明与后续步骤见[本轮决定](docs/pilot-decisions-2026-10-21.md)。
+
+### 5. 测试与解析基线测量
+
+```powershell
+& .venv-review/Scripts/python.exe -X utf8 -m pytest -q
+& .venv-review/Scripts/python.exe -X utf8 -m scripts.evaluate_corpus --tokens
+```
+
+最近一次代码测试记录（2026-10-21）：**31 项通过**，包含六篇试点的来源一致性、异常来源拒绝、分块保留与输入保护检查；测试通过不代表论文解释已获验证。历史基线中的测试数量反映当时版本。Windows 下若旧 pytest 临时目录存在权限问题，可使用新的临时目录，参考[实施计划中的测试记录](docs/project-plan-2026-10-19.md)。
+
+## 目录与结果入口
+
+```text
+systematic-review-assistant/
+├── src/                     # 解析、信息抽取、片段比较和关联实验；含早期原型
+├── tests/                   # 自动化测试与测试标注
+├── configs/                 # 试点名单等非敏感配置
+├── prompts/                 # 可检查的论点提取与比较任务说明
+├── scripts/
+│   ├── bootstrap.ps1        # 环境初始化脚本
+│   ├── evaluate_corpus.py   # 解析基线测量
+│   └── experiments/         # 手动实验脚本
+├── docs/                    # 实验报告、定点核查、实施计划
+├── reports/baseline/        # 可追溯的基线测量记录
+├── data/
+│   ├── pdf/                # 本地原始论文
+│   ├── processed/          # 解析档案和实验输出
+│   ├── json/               # 早期原型输出
+│   └── markdown/           # 手动转换输出
+├── outputs/                # 本地交付物，例如人工标注表
+├── tmp/                    # 临时文件和模型/分词缓存
+├── requirements*.txt       # 运行、开发及锁定依赖
+└── README.md
+```
+
+原始论文、全文衍生结果、`outputs/`、缓存和本地环境已配置 Git 忽略规则；克隆仓库后需要自行准备这些本地文件。
+
+- [详细实施计划与分工](docs/project-plan-2026-10-19.md)：任务、前置条件、交付物和验收方式。
+- [解析基线报告](docs/parsing-baseline-2026-10-15.md)：环境、质量与已知限制。
+- [TF-IDF 实验报告](docs/contrastive-experiment-2026-10-16.md)：片段比较方法及结果。
+- [候选定点核查](docs/contrastive-pairs-review-2026-10-19.md)：12 对初评与原文核查。
+- [本地候选报告](data/processed/contrastive-pairs.md)：当前实验展示结果。
+- [本地标注表示例](outputs/bilingual-pair-annotation/bilingual-pair-annotation-example.xlsx)：12 对现有候选与 1 对人工构造的中英示例。该示例不是模型检索结果，现有表后续需扩展关系与综合评价字段。
+
+历史报告保留当时的设计、路径与结论；最新产品目标和推进顺序以本 README 和实施计划为准。
 
 ## License
 

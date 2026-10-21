@@ -1,0 +1,10 @@
+任务：对所给论文论点及原文证据进行跨论文比较，只使用输入材料。
+输出 JSON，包含 relations、unmatched_claims、coverage_notes。
+每条关系包含 relation_id、document_aliases、claim_ids、topic、comparison_dimension、relation_types、explanation_zh、qualifiers、evidence_ids、uncertainty。
+关系可以是概念关联、一致、结论分歧、解释差异、定义差异、方法差异、情境/层次差异、互补、暂不可比较；允许多个维度并存。
+先判断命题、对象、概念定义、时间与条件是否可比较，再判断一致或分歧。
+规范性建议与经验描述不能直接视为相互矛盾；不同职业中客户的不同角色不能直接合并为同一机制。
+每条确定关系需要双方证据；只输入摘要或论点表而缺少必要原文时应记录不足。
+未讨论不等于反对；共同转述同一来源不等于多项独立支持；不根据词汇重叠或相似度直接赋予共识标签。
+保留未匹配论点和不可比较项，不强制所有论文之间都有关系。
+不得由 A-B 与 B-C 的关系直接推导 A-C；跨三篇及以上的综合必须逐篇列明支持与反向证据。

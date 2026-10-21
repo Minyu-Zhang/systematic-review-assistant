@@ -1,0 +1,17 @@
+{
+  "schema_version": "pilot-selection-1",
+  "selected_by": "user",
+  "selected_at": "2026-10-21",
+  "documents": [
+    {"alias": "LI", "archive": "9088a34e5b727e60", "language": "zh", "label": "郦菁、张纬松：从职业到知识", "quality_notes": [{"pages": [2], "issue": "此前候选含脚注；正文和脚注需区分"}]},
+    {"alias": "OLEARY", "archive": "6eeeeee72fac2987", "language": "en", "label": "O’Leary 等：社会工作关系边界", "quality_notes": []},
+    {"alias": "LIU", "archive": "64bdf14d7898e583", "language": "en", "label": "Liu 与 Emirbayer：Field and Ecology", "quality_notes": []},
+    {"alias": "ABBOTT", "archive": "c5df574d26d2647d", "language": "en", "label": "Abbott：Boundaries of Social Work", "quality_notes": [{"pages": [8, 15], "issue": "此前原文核查确认提取缺字；其他页也需按实际片段判断，勿凭语义补字"}]},
+    {"alias": "KING", "archive": "f3a487226c718887", "language": "en", "label": "King 等：医疗职业角色边界综述", "quality_notes": [{"pages": [5, 6], "issue": "此前候选出现表格与正文混入；综述纳入研究和作者综合须区分"}]},
+    {"alias": "HEINZ", "archive": "fcb0979b05ee8a0a", "language": "en", "label": "Heinz 与 Laumann：律师职业与客户利益", "quality_notes": [{"pages": [2, 28], "issue": "本轮文本阅读发现部分行末缺字；本轮未对这些页作 PDF 视觉核查"}]}
+  ],
+  "initial_api_comparison": ["LI", "OLEARY"],
+  "providers_requested": ["glm", "deepseek"],
+  "budget_cny": null,
+  "paid_run_approved": false
+}
